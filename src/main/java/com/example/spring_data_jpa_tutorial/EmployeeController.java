@@ -32,4 +32,16 @@ public class EmployeeController {
                                           @Valid @RequestBody EmployeeInfo employeeInfo){
         return  epmService.updateEmployeeInfo(id,employeeInfo);
     }
+
+
+    @GetMapping("/{selectedUserId}")
+    public EmployeeInfo particularUserId(@PathVariable  Integer selectedUserId){
+        return epmService.findTheParticularId(selectedUserId);
+    }
+
+    @GetMapping("/deleting/{deleteid}")
+    public String toDeleteEmployeeDetails(@PathVariable Integer deleteid){
+         epmService.deleting_the_user(deleteid);
+         return  "Employee Id is deleted successfully for "+deleteid;
+    }
 }

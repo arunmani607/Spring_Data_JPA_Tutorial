@@ -3,6 +3,7 @@ package com.example.spring_data_jpa_tutorial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -29,4 +30,19 @@ public class EmplyeeService {
 
       return employeeDetailsRepository.save(update);
   }
+
+  public EmployeeInfo findTheParticularId(Integer id){
+      return employeeDetailsRepository.findById(id)
+              .orElseThrow(() -> new RuntimeException(
+                      "Employee not found with id " + id));
+  }
+
+  public void  deleting_the_user (Integer id){
+      if(employeeDetailsRepository.existsById(id)){
+          employeeDetailsRepository.deleteById(id);
+      }else {
+        throw new RuntimeException("Employee Id is not found :::"+id);
+      }
+
+    }
 }
