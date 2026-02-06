@@ -23,7 +23,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/getAllData")
-    public List<EmployeeInfo> getEmployeeInfoList(EmployeeInfo employeeInfo){
+    public List<EmployeeInfo> getEmployeeInfoList(){
         return epmService.getEmployeeInfos();
     }
 
@@ -43,5 +43,15 @@ public class EmployeeController {
     public String toDeleteEmployeeDetails(@PathVariable Integer deleteid){
          epmService.deleting_the_user(deleteid);
          return  "Employee Id is deleted successfully for "+deleteid;
+    }
+
+    @GetMapping("/search/designation")
+    public List<EmployeeInfo>searchDesign(@RequestParam String search){
+         return  epmService.findingEmployeeDesign(search);
+
+    }
+    @GetMapping("/search/age")
+    public List<EmployeeInfo>employeeAge(@RequestParam Integer age) throws Exception {
+        return epmService.findingAgeListOFEmployee(age);
     }
 }

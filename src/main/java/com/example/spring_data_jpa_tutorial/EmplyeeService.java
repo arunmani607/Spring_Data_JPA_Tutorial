@@ -45,4 +45,19 @@ public class EmplyeeService {
       }
 
     }
+    public List<EmployeeInfo> findingEmployeeDesign(String employeeInfo){
+      List<EmployeeInfo>searchDesign=employeeDetailsRepository.findByEmployeeDesign(employeeInfo);
+      return  searchDesign;
+
+    }
+
+    public List<EmployeeInfo>findingAgeListOFEmployee(Integer age) throws Exception {
+      List<EmployeeInfo>employeeAges=employeeDetailsRepository.findByemployeeAge(age);
+        if (employeeAges.isEmpty()) {
+            throw new Exception(
+                    "No employees found with age: " + age);
+        }
+      return employeeAges;
+    }
+
 }
