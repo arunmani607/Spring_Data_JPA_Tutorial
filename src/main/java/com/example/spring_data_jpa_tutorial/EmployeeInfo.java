@@ -7,6 +7,8 @@ import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Setter
 @Getter
@@ -37,5 +39,9 @@ public class EmployeeInfo {
 
     @Email(message = "Email required")
     private  String employeeGmail;
+
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<EmployeeTaskDetails> tasks;
+
 
 }

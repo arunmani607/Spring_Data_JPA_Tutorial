@@ -54,4 +54,15 @@ public class EmployeeController {
     public List<EmployeeInfo>employeeAge(@RequestParam Integer age) throws Exception {
         return epmService.findingAgeListOFEmployee(age);
     }
+
+    // Combined endpoints - Get employees with their tasks
+    @GetMapping("/with-tasks")
+    public List<EmployeeTaskCombinedDTO> getAllEmployeesWithTasks(){
+        return epmService.getAllEmployeesWithTasks();
+    }
+
+    @GetMapping("/{employeeId}/with-tasks")
+    public EmployeeTaskCombinedDTO getEmployeeWithTasks(@PathVariable Integer employeeId){
+        return epmService.getEmployeeWithTasksById(employeeId);
+    }
 }

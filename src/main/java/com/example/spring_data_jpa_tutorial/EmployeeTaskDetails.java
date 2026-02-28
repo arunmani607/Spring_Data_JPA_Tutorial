@@ -35,6 +35,11 @@ public class EmployeeTaskDetails {
     @Column(nullable = false, length = 12)
     public StatusEnum empTaskStatus = StatusEnum.InProgress;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private EmployeeInfo employee;
+
 
     public enum PriorityEnum {
         Low, Medium, High
