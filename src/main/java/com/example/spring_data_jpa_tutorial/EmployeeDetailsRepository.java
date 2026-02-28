@@ -8,3 +8,4 @@ public interface EmployeeDetailsRepository extends JpaRepository<EmployeeInfo,In
     List<EmployeeInfo>findByEmployeeDesign(String design);
     List<EmployeeInfo>findByemployeeAge(Integer age);
 }
+

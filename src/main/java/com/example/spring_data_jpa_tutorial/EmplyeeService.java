@@ -10,6 +10,8 @@ import java.util.List;
 public class EmplyeeService {
   @Autowired
   public EmployeeDetailsRepository employeeDetailsRepository;
+  @Autowired
+  public EmployeeTaskRepository employeeTaskRepository;
 
   public  EmployeeInfo toSaveEmployeeInfo(EmployeeInfo employee){
       return employeeDetailsRepository.save(employee);
@@ -60,4 +62,8 @@ public class EmplyeeService {
       return employeeAges;
     }
 
+
+    public EmployeeTaskDetails saveEmployeeTaskDetails(EmployeeTaskDetails taskDetails){
+      return employeeTaskRepository.save(taskDetails);
+    }
 }
